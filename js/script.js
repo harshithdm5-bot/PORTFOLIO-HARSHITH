@@ -121,8 +121,8 @@ function initProjectModal() {
                 'Energy consumption monitoring'
             ],
             technologies: ['Arduino', 'ESP32', 'Flutter', 'Firebase', 'C++', 'IoT'],
-            github: '#',
-            demo: '#'
+            github: 'https://github.com/demo-user/smart-home-controller',
+            demo: 'https://smart-home-demo.netlify.app'
         },
         '2': {
             title: 'Circuit Simulator',
@@ -137,8 +137,8 @@ function initProjectModal() {
                 'Educational tutorials and examples'
             ],
             technologies: ['JavaScript', 'HTML5 Canvas', 'CSS3', 'Node.js', 'WebGL'],
-            github: '#',
-            demo: '#'
+            github: 'https://github.com/demo-user/circuit-simulator',
+            demo: 'https://circuit-simulator-demo.netlify.app'
         },
         '3': {
             title: 'LED Matrix Display',
@@ -153,8 +153,8 @@ function initProjectModal() {
                 'Mobile app control interface'
             ],
             technologies: ['PCB Design', 'Microcontroller', 'Bluetooth', 'Mobile App', 'C Programming'],
-            github: '#',
-            demo: '#'
+            github: 'https://github.com/demo-user/led-matrix-display',
+            demo: 'https://led-matrix-demo.netlify.app'
         }
     };
 
