@@ -1,3 +1,323 @@
+/* Space Loading Animation */
+.space-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #0c0c0c 0%, #1a1a2e 25%, #16213e 50%, #0f1419 75%, #000000 100%);
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    animation: fadeOut 1s ease-in-out 4s forwards;
+}
+
+.space-background {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* Stars Animation */
+.stars, .stars2, .stars3 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.stars {
+    background: transparent url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="20" cy="20" r="1" fill="white" opacity="0.8"/><circle cx="80" cy="15" r="0.5" fill="white" opacity="0.6"/><circle cx="45" cy="70" r="1.5" fill="white" opacity="0.9"/><circle cx="15" cy="85" r="0.8" fill="white" opacity="0.7"/><circle cx="90" cy="60" r="0.3" fill="white" opacity="0.5"/><circle cx="60" cy="25" r="1.2" fill="white" opacity="0.8"/><circle cx="35" cy="95" r="0.6" fill="white" opacity="0.6"/></svg>') repeat;
+    animation: sparkle 3s linear infinite;
+}
+
+.stars2 {
+    background: transparent url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="30" cy="40" r="0.8" fill="cyan" opacity="0.7"/><circle cx="70" cy="80" r="0.4" fill="cyan" opacity="0.5"/><circle cx="85" cy="25" r="1" fill="cyan" opacity="0.8"/><circle cx="25" cy="75" r="0.6" fill="cyan" opacity="0.6"/><circle cx="55" cy="10" r="0.7" fill="cyan" opacity="0.7"/></svg>') repeat;
+    animation: sparkle 4s linear infinite reverse;
+}
+
+.stars3 {
+    background: transparent url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="40" cy="60" r="0.5" fill="purple" opacity="0.6"/><circle cx="75" cy="35" r="0.8" fill="purple" opacity="0.7"/><circle cx="10" cy="50" r="0.4" fill="purple" opacity="0.5"/><circle cx="95" cy="85" r="0.6" fill="purple" opacity="0.6"/></svg>') repeat;
+    animation: sparkle 5s linear infinite;
+}
+
+@keyframes sparkle {
+    0% { transform: translateY(0px); }
+    100% { transform: translateY(-100px); }
+}
+
+/* Planets */
+.planet {
+    position: absolute;
+    border-radius: 50%;
+    animation: float 6s ease-in-out infinite;
+}
+
+.planet-1 {
+    width: 120px;
+    height: 120px;
+    background: linear-gradient(135deg, #ff6b6b, #ee5a24);
+    top: 20%;
+    left: 15%;
+    box-shadow: 0 0 30px rgba(255, 107, 107, 0.4);
+    animation: rotate 20s linear infinite, float 6s ease-in-out infinite;
+}
+
+.planet-ring {
+    position: absolute;
+    top: -20px;
+    left: -20px;
+    width: 160px;
+    height: 160px;
+    border: 3px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    animation: rotate 15s linear infinite reverse;
+}
+
+.planet-2 {
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #4834d4, #686de0);
+    top: 60%;
+    right: 20%;
+    box-shadow: 0 0 25px rgba(72, 52, 212, 0.4);
+    animation: rotate 25s linear infinite, float 8s ease-in-out infinite 2s;
+}
+
+.planet-3 {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, #00d2d3, #54a0ff);
+    bottom: 25%;
+    left: 25%;
+    box-shadow: 0 0 20px rgba(0, 210, 211, 0.4);
+    animation: rotate 30s linear infinite reverse, float 7s ease-in-out infinite 1s;
+}
+
+.planet-spot {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    top: 30%;
+    left: 40%;
+}
+
+.spot-2 {
+    width: 10px;
+    height: 10px;
+    top: 60%;
+    left: 20%;
+}
+
+/* Galaxy */
+.galaxy {
+    position: absolute;
+    top: 40%;
+    right: 10%;
+    width: 200px;
+    height: 200px;
+    animation: rotate 40s linear infinite;
+}
+
+.galaxy-core {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    background: radial-gradient(circle, #fff, #ffd700);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
+    animation: pulse 3s ease-in-out infinite;
+}
+
+.galaxy-arm {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100px;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+    transform-origin: 0 0;
+    border-radius: 2px;
+}
+
+.arm-1 {
+    transform: translate(-50%, -50%) rotate(0deg);
+}
+
+.arm-2 {
+    transform: translate(-50%, -50%) rotate(120deg);
+}
+
+.arm-3 {
+    transform: translate(-50%, -50%) rotate(240deg);
+}
+
+/* Shooting Stars */
+.shooting-star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    border-radius: 50%;
+    animation: shoot 2s linear infinite;
+}
+
+.shooting-star-2 {
+    animation-delay: 1s;
+    animation-duration: 3s;
+}
+
+@keyframes shoot {
+    0% {
+        top: -10px;
+        right: -10px;
+        opacity: 1;
+        transform: scale(0);
+    }
+    10% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    90% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        top: 110%;
+        right: 110%;
+        opacity: 0;
+        transform: scale(0);
+    }
+}
+
+/* Loading Text */
+.loading-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+    z-index: 10001;
+}
+
+.loading-text h1 {
+    font-size: 4rem;
+    font-weight: 700;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%, #ff6b6b 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: 1rem;
+    animation: glow 2s ease-in-out infinite alternate;
+}
+
+.loading-text p {
+    font-size: 1.2rem;
+    opacity: 0.8;
+    margin-bottom: 2rem;
+    animation: fadeInUp 1s ease-out 0.5s both;
+}
+
+.loading-bar {
+    width: 300px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 2px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.loading-progress {
+    width: 0%;
+    height: 100%;
+    background: linear-gradient(90deg, #667eea, #764ba2, #ff6b6b);
+    border-radius: 2px;
+    animation: loadProgress 3s ease-out forwards;
+}
+
+/* Animations */
+@keyframes rotate {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+}
+
+@keyframes pulse {
+    0%, 100% { transform: translate(-50%, -50%) scale(1); }
+    50% { transform: translate(-50%, -50%) scale(1.2); }
+}
+
+@keyframes glow {
+    0% { text-shadow: 0 0 20px rgba(102, 126, 234, 0.5); }
+    100% { text-shadow: 0 0 30px rgba(102, 126, 234, 0.8), 0 0 40px rgba(118, 75, 162, 0.6); }
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    100% {
+        opacity: 0.8;
+        transform: translateY(0);
+    }
+}
+
+@keyframes loadProgress {
+    0% { width: 0%; }
+    100% { width: 100%; }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+        visibility: visible;
+    }
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
+/* Hide main content initially */
+body.loading {
+    overflow: hidden;
+}
+
+body.loading .navbar,
+body.loading .hero,
+body.loading .about,
+body.loading .projects,
+body.loading .books,
+body.loading .contact,
+body.loading .footer {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+body.loaded .navbar,
+body.loaded .hero,
+body.loaded .about,
+body.loaded .projects,
+body.loaded .books,
+body.loaded .contact,
+body.loaded .footer {
+    opacity: 1;
+}
+
 /* Reset and Base Styles */
 * {
     margin: 0;

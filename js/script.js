@@ -1,14 +1,94 @@
 // Portfolio Website JavaScript
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Initialize all functionality
-    initNavigation();
-    initProjectFiltering();
-    initProjectModal();
-    initSmoothScrolling();
-    initContactForm();
-    initScrollAnimations();
+    // Initialize space loading animation
+    initSpaceLoader();
+    
+    // Initialize all functionality after loading
+    setTimeout(() => {
+        initNavigation();
+        initProjectFiltering();
+        initProjectModal();
+        initSmoothScrolling();
+        initContactForm();
+        initScrollAnimations();
+    }, 4500); // Start after space animation
 });
+
+// Space Loading Animation Controller
+function initSpaceLoader() {
+    // Add loading class to body
+    document.body.classList.add('loading');
+    
+    const spaceLoader = document.getElementById('spaceLoader');
+    const loadingProgress = document.querySelector('.loading-progress');
+    
+    // Simulate loading progress
+    let progress = 0;
+    const loadingInterval = setInterval(() => {
+        progress += Math.random() * 15;
+        if (progress > 100) {
+            progress = 100;
+            clearInterval(loadingInterval);
+        }
+        loadingProgress.style.width = progress + '%';
+    }, 150);
+    
+    // Add extra sparkle effects
+    createExtraStars();
+    
+    // Handle animation completion
+    setTimeout(() => {
+        // Start fade out
+        spaceLoader.style.animation = 'fadeOut 1.5s ease-in-out forwards';
+        
+        // Remove loading class and add loaded class
+        setTimeout(() => {
+            document.body.classList.remove('loading');
+            document.body.classList.add('loaded');
+            
+            // Remove space loader from DOM
+            setTimeout(() => {
+                if (spaceLoader.parentNode) {
+                    spaceLoader.parentNode.removeChild(spaceLoader);
+                }
+            }, 1500);
+        }, 500);
+    }, 4000); // Total animation duration: 4 seconds
+}
+
+// Create additional star effects
+function createExtraStars() {
+    const spaceBackground = document.querySelector('.space-background');
+    
+    // Create random twinkling stars
+    for (let i = 0; i < 50; i++) {
+        const star = document.createElement('div');
+        star.className = 'twinkle-star';
+        star.style.cssText = `
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            top: ${Math.random() * 100}%;
+            left: ${Math.random() * 100}%;
+            animation: twinkle ${2 + Math.random() * 3}s ease-in-out infinite ${Math.random() * 2}s;
+            opacity: ${0.3 + Math.random() * 0.7};
+        `;
+        spaceBackground.appendChild(star);
+    }
+    
+    // Add twinkle animation to stylesheet
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+        }
+    `;
+    document.head.appendChild(style);
+}
 
 // Navigation functionality
 function initNavigation() {
