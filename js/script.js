@@ -17,11 +17,19 @@ document.addEventListener('DOMContentLoaded', function() {
 
 // Space Loading Animation Controller
 function initSpaceLoader() {
-    // Add loading class to body
-    document.body.classList.add('loading');
-    
     const spaceLoader = document.getElementById('spaceLoader');
     const loadingProgress = document.querySelector('.loading-progress');
+    
+    console.log('Space loader initialized!'); // Debug log
+    
+    if (!spaceLoader) {
+        console.error('Space loader not found!');
+        return;
+    }
+    
+    // Make sure space loader is visible
+    spaceLoader.style.display = 'flex';
+    spaceLoader.style.opacity = '1';
     
     // Simulate loading progress
     let progress = 0;
@@ -31,7 +39,9 @@ function initSpaceLoader() {
             progress = 100;
             clearInterval(loadingInterval);
         }
-        loadingProgress.style.width = progress + '%';
+        if (loadingProgress) {
+            loadingProgress.style.width = progress + '%';
+        }
     }, 150);
     
     // Add extra sparkle effects
@@ -39,21 +49,24 @@ function initSpaceLoader() {
     
     // Handle animation completion
     setTimeout(() => {
-        // Start fade out
-        spaceLoader.style.animation = 'fadeOut 1.5s ease-in-out forwards';
+        console.log('Starting fade out...'); // Debug log
         
-        // Remove loading class and add loaded class
+        // Start fade out
+        spaceLoader.style.transition = 'opacity 1.5s ease-in-out';
+        spaceLoader.style.opacity = '0';
+        
+        // Show main content
         setTimeout(() => {
             document.body.classList.remove('loading');
             document.body.classList.add('loaded');
             
             // Remove space loader from DOM
             setTimeout(() => {
-                if (spaceLoader.parentNode) {
+                if (spaceLoader && spaceLoader.parentNode) {
                     spaceLoader.parentNode.removeChild(spaceLoader);
                 }
             }, 1500);
-        }, 500);
+        }, 800);
     }, 4000); // Total animation duration: 4 seconds
 }
 
